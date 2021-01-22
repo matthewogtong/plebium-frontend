@@ -11,9 +11,9 @@ import PublishStoryPage from "./PublishStoryPage"
 //TitlePage => Done 
 //HomePage => Done
 //ProfilePage => Done
-//StoryPage
-//NewStoryPage
-//PublishStoryPage
+//StoryPage => Done
+//NewStoryPage => Done 
+//PublishStoryPage => Done 
 function App() {
   return (
     <div className="App">
