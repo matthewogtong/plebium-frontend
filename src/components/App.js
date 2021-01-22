@@ -8,9 +8,9 @@ import StoryPage from "./StoryPage"
 import NewStoryPage from "./NewStoryPage"
 import PublishStoryPage from "./PublishStoryPage"
 
-//TitlePage => done 
-//HomePage
-//ProfilePage
+//TitlePage => Done 
+//HomePage => Done
+//ProfilePage => Done
 //StoryPage
 //NewStoryPage
 //PublishStoryPage

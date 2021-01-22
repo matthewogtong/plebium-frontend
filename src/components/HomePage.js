@@ -6,13 +6,13 @@ import TopicList from "./TopicList"
 
 function HomePage() {
 return (
-    <div>
-        <MainHeader />
-        <TrendingList />
-        <BookmarkList />
-        <TopicList />
-    </div>
-)
+        <div>
+            <MainHeader />
+            <TrendingList />
+            <BookmarkList />
+            <TopicList />
+        </div>
+    )
 
 }
 
