@@ -1,28 +1,37 @@
 import React from "react";
-import logo from './logo.svg';
-import './App.css';
-import HomePage from "./HomePage"
-import TitlePage from "./TitlePage"
-import ProfilePage from "./ProfilePage"
-import StoryPage from "./StoryPage"
-import NewStoryPage from "./NewStoryPage"
-import PublishStoryPage from "./PublishStoryPage"
+import { Route, Switch } from "react-router-dom"
+import logo from '../logo.svg';
+import '../App.css';
+import HomePage from "./home-page/HomePage"
+import TitlePage from "./title-page/TitlePage"
+import ProfilePage from "./profile-page/ProfilePage"
+import StoryPage from "./story-page/StoryPage"
+import NewStoryPage from "./new-story-page/NewStoryPage"
+import PublishStoryPage from "./publish-story/PublishStoryPage"
 
-//TitlePage => Done 
-//HomePage => Done
-//ProfilePage => Done
-//StoryPage => Done
-//NewStoryPage => Done 
-//PublishStoryPage => Done 
 function App() {
   return (
     <div className="App">
-      <TitlePage /> 
-      <HomePage />
-      <ProfilePage />
-      <StoryPage />
-      <NewStoryPage />
-      <PublishStoryPage />
+      <Switch>
+        <Route exact path="/">
+          <TitlePage /> 
+        </Route>
+        <Route path="/home">
+          <HomePage />
+        </Route>
+        <Route path="/profile/:id">
+          <ProfilePage />
+        </Route>
+        <Route path="/story">
+          <StoryPage />
+        </Route>
+        <Route path="/new-story">
+          <NewStoryPage />
+        </Route>
+        <Route path="/publish-story">
+          <PublishStoryPage />
+        </Route>
+      </Switch>
     </div>
   );
 }

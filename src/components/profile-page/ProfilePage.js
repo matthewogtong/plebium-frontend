@@ -1,7 +1,7 @@
 import React from "react";
-import MainHeader from "./MainHeader"
+import MainHeader from "../MainHeader"
 import StoryList from "./StoryList"
-import UserInfo from "./UserInfo"
+import UserInfo from "../UserInfo"
 
 function ProfilePage() {
     return (

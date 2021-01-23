@@ -1,7 +1,7 @@
 import React from "react";
 import TitleHeader from "./TitleHeader"
 import About from "./About"
-import TrendingList from "./TrendingList"
+import TrendingList from "../TrendingList"
 
 function TitlePage() {
 return (
