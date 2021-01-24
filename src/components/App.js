@@ -10,11 +10,19 @@ import PublishStoryPage from "./publish-story/PublishStoryPage"
 
 function App() {
   const [topics, setTopics] = useState([])
+  const [users, setUsers] = useState([])
+  // const [stories, setUsers] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:3000/topics")
       .then((r) => r.json())
       .then(setTopics);
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/users")
+      .then((r) => r.json())
+      .then(setUsers);
   }, []);
 
   return (

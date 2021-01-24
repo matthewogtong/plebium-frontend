@@ -3,7 +3,7 @@ import TrendingStory from "./TrendingStory"
 
 function TrendingList() {
 return (
-    <div>
+    <div className="trending-list">
         <TrendingStory />
     </div>
 )

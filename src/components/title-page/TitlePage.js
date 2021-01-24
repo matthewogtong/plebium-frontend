@@ -5,7 +5,7 @@ import TrendingList from "../TrendingList"
 
 function TitlePage() {
 return (
-    <div>
+    <div id="title-page">
         <TitleHeader />
         <About />
         <TrendingList />

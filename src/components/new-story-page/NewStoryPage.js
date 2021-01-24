@@ -4,10 +4,16 @@ import NewStoryForm from "./NewStoryForm"
 
 
 function NewStoryPage() {
+
+    function handleSubmit(e) {
+        e.preventDefault()
+    }
+
     return (
         <div>
             <NewStoryHeader />
             <NewStoryForm />
+            <button onSubmit={handleSubmit}>Submit Story</button>
         </div>
     )
 
