@@ -1,10 +1,13 @@
 import React from "react";
 import Topic from "./Topic"
 
-function TopicList() {
+function TopicList({topics}) {
+    const topicItems = topics.map((topic) => (
+        <Topic key={topic.id} topic={topic} />
+    ))
     return (
         <div>
-            <Topic />
+            {topicItems}
         </div>
     )
 }

@@ -1,8 +1,8 @@
 import React from "react";
 
-function Topic() {
+function Topic({ topic }) {
     return (
-        <h5>Topic</h5>
+        <h5>{topic.name}</h5>
     )
 }
 
