@@ -4,13 +4,13 @@ import TrendingList from "../TrendingList"
 import BookmarkList from "./BookmarkList"
 import TopicList from "./TopicList"
 
-function HomePage() {
+function HomePage({ topics }) {
 return (
         <div>
             <MainHeader />
             <TrendingList />
             <BookmarkList />
-            <TopicList />
+            <TopicList topics={topics} />
         </div>
     )
 
