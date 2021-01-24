@@ -11,7 +11,7 @@ import PublishStoryPage from "./publish-story/PublishStoryPage"
 function App() {
   const [topics, setTopics] = useState([])
   const [users, setUsers] = useState([])
-  // const [stories, setUsers] = useState([])
+  const [stories, setStories] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:3000/topics")
@@ -24,6 +24,18 @@ function App() {
       .then((r) => r.json())
       .then(setUsers);
   }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/stories")
+      .then((r) => r.json())
+      .then(setStories);
+  }, []);
+
+function handleAddStory(newStory) {
+  const updatedStoriesArray = [newStory, ...stories]
+  setStories(updatedStoriesArray)
+
+}
 
   return (
     <div className="App">
@@ -41,7 +53,7 @@ function App() {
           <StoryPage />
         </Route>
         <Route path="/new-story">
-          <NewStoryPage />
+          <NewStoryPage onAddStory={handleAddStory}/>
         </Route>
         <Route path="/publish-story">
           <PublishStoryPage />

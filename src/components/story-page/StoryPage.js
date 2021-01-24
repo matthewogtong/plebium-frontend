@@ -5,7 +5,7 @@ import Snaps from "./Snaps"
 import Story from "./Story"
 import CommentsList from "./CommentsList"
 
-function StoryPage() {
+function StoryPage({user, story}) {
     return (
         <div>
             <MainHeader />

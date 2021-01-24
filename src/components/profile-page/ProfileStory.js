@@ -1,10 +1,14 @@
 import React from "react";
 
-function ProfileStory() {
+function ProfileStory({story}) {
+    const {title, content} = story
     return (
-        <h5>Profile Story</h5>
+        <div>
+            <h3>{title}</h3>
+            <h5>{content}</h5>
+            
+        </div>
     )
-
 }
 
 export default ProfileStory;

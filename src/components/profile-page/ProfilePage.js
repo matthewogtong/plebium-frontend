@@ -3,11 +3,11 @@ import MainHeader from "../MainHeader"
 import StoryList from "./StoryList"
 import UserInfo from "../UserInfo"
 
-function ProfilePage() {
+function ProfilePage({stories}) {
     return (
         <div>
             <MainHeader />
-            <StoryList />
+            <StoryList stories={stories} />
             <UserInfo />
         </div>
     )

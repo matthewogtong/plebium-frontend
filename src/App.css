@@ -78,9 +78,9 @@
 /* TITLE PAGE */
 #title-page {
   display: grid;
-  grid-gap: 5px;
+  grid-gap: 3px;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: 40px 200px 200px;
+  grid-template-rows: 40px 200px auto;
   grid-template-areas:
       "header"
       "about"
@@ -116,7 +116,7 @@
 /* TITLE ABOUT */
 .title-about {
   display: grid;
-  margin-top: 5%;
+  margin-top: 10%;
   grid-area: about;
   grid-gap: 3px;
   grid-template-columns: repeat(12, 1fr);
@@ -144,11 +144,12 @@
 /* TITLE TRENDING STORIES */
 .trending-list {
   display: grid;
+  margin-top: 20%;
   grid-area: tl;
   grid-gap: 3px;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(13, 1fr);
   grid-template-areas: 
-      "tstory . . . . . . . . . . ."
+      ". . . . . . tstory . . . . . ."
 }
 
 .trending-story {
