@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 import '../App.css';
 import HomePage from "./home-page/HomePage"
 import TitlePage from "./title-page/TitlePage"
@@ -99,28 +99,32 @@ function handleSubmit(e) {
     <div className="App">
       <Switch>
         <Route exact path="/">
-          <TitlePage 
-          loginUsername={loginUsername} 
-          setLoginUsername={setLoginUsername}
-          handleLoginSubmit={handleLoginSubmit}
-          /> 
+          {!isLoggedIn ? (
+            <TitlePage
+              loginUsername={loginUsername}
+              setLoginUsername={setLoginUsername}
+              handleLoginSubmit={handleLoginSubmit}
+            />
+          ) : (
+            <Redirect to="/home" />
+          )}
         </Route>
         <Route path="/home">
-          <HomePage topics={topics}/>
+          <HomePage topics={topics} />
         </Route>
         <Route path="/profile/:id">
-          <ProfilePage users={users} stories={stories}/>
+          <ProfilePage users={users} stories={stories} />
         </Route>
         <Route path="/story">
           <StoryPage />
         </Route>
         <Route path="/new-story">
-          <NewStoryPage 
-            handleSubmit={handleSubmit} 
-            storyTitle={storyTitle} 
-            setStoryTitle={setStoryTitle} 
-            storyContent={storyContent} 
-            setStoryContent={setStoryContent} 
+          <NewStoryPage
+            handleSubmit={handleSubmit}
+            storyTitle={storyTitle}
+            setStoryTitle={setStoryTitle}
+            storyContent={storyContent}
+            setStoryContent={setStoryContent}
           />
         </Route>
         <Route path="/publish-story">
