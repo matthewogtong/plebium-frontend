@@ -1,18 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 
-function StoryTitle({title, setTitle}) {
+function StoryTitle({storyTitle, setStoryTitle}) {
     return (
-        <div className="story-title-input">
-            <h5>Story Title</h5>
-            <form className="story-title">
-                <input
-                type="text"
-                placeholder="Title..."
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}>
-                </input>
-            </form>
-        </div>
+        <div className="new-plant-form">
+      <h3>Title</h3>
+      <form className="story-title">
+      <input
+          type="text"
+          name="title"
+          placeholder="Title..."
+          value={storyTitle}
+          onChange={(e) => setStoryTitle(e.target.value)}
+        />
+      </form>
+    </div>
     )
 }
 

@@ -1,12 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import StoryTitle from "./StoryTitle"
 import StoryContent from "./StoryContent"
 
-function NewStoryForm() {
+function NewStoryForm({onSubmit}) {
+const [storyTitle, setStoryTitle] = useState("")
+const [storyContent, setStoryContent] = useState("")
+
+
+    // condense storytitle and storycontent 
     return (
         <div>
-            <StoryTitle />
-            <StoryContent />
+            <StoryTitle setStoryTitle={setStoryTitle} onSubmit={onSubmit}/>
+            <StoryContent setStoryContent={setStoryContent} onSubmit={onSubmit} />
         </div>
     )
 
