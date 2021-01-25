@@ -1,8 +1,9 @@
 import React from "react";
 
-function Snaps() {
+function Snaps({snaps}) {
     return (
-        <h5>Snaps</h5>
+        <h5>{snaps} Snaps</h5>
+        
     )
 }
 

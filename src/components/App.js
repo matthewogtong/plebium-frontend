@@ -18,11 +18,17 @@ function App() {
   const [storyTitle, setStoryTitle] = useState("")
   const [storyContent, setStoryContent] = useState("")
 
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState({});
 
-  // LOGIN STATE
+  // LOGIN STATES
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [loginUsername, setLoginUsername] = useState("")
+
+  // CREATE ACCOUNT STATES
+  const [newUsername, setNewUsername] = useState("")
+  const [newFirstName, setNewFirstName] = useState("")
+  const [newLastName, setNewLastName] = useState("")
+  const [newBio, setNewBio] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:3000/topics")
@@ -36,38 +42,40 @@ function App() {
       .then(setStories);
   }, []);
 
-
-  // USER FETCH
-   // auto-login
-  //  useEffect(() => {
-  //   fetch("http://localhost:3000/autologin")
-  //     .then((r) => r.json())
-  //     .then(setCurrentUser);
-  // }, []);
-
 // HANDLE LOGIN FUNCTION
 const handleLoginSubmit = () => {
-  console.log("logged in")
   fetch("http://localhost:3000/users")
     .then(r => r.json())
     .then(userArr => {
       userArr.forEach(user => { 
         if (user.username === loginUsername) {
           setIsLoggedIn(true)
-          setCurrentUser(user = {
-            username: user.username,
-            first_name: user.first_name,
-            last_name: user.last_name
-          }) 
+          setCurrentUser(user) 
         }
       })
     })
 }
 
-console.log(isLoggedIn)
-console.log(currentUser)
-console.log(loginUsername)
-
+// HANDLE CREATE ACCOUNT FUNCTION
+const handleCreateAccountSubmit = () => {
+  fetch("http://localhost:3000/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      username: newUsername,
+      first_name: newFirstName,
+      last_name: newFirstName,
+      bio: newBio
+    })
+  })
+    .then(r => r.json())
+    .then(newUser => {
+      setCurrentUser(newUser)
+      setIsLoggedIn(true)
+    })
+}
 
 
 function handleAddStory(newStory) {
@@ -104,13 +112,25 @@ function handleSubmit(e) {
               loginUsername={loginUsername}
               setLoginUsername={setLoginUsername}
               handleLoginSubmit={handleLoginSubmit}
+              newUsername={newUsername}
+              setNewUsername={setNewUsername}
+              newFirstName={newFirstName}
+              setNewFirstName={setNewFirstName}
+              newLastName={newLastName}
+              setNewLastName={setNewLastName}
+              newBio={newBio}
+              setNewBio={setNewBio}
+              handleCreateAccountSubmit={handleCreateAccountSubmit}
             />
           ) : (
             <Redirect to="/home" />
           )}
         </Route>
         <Route path="/home">
-          <HomePage topics={topics} />
+          <HomePage 
+          topics={topics} 
+          currentUser={currentUser}
+          />
         </Route>
         <Route path="/profile/:id">
           <ProfilePage users={users} stories={stories} />

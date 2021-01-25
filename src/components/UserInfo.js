@@ -1,10 +1,11 @@
 import React from "react";
 
-function UserInfo() {
+function UserInfo({user}) {
+    const {first_name, last_name, bio } = user;
     return (
         <div className="user-info">
-            <p>user name here </p>
-            <p>bio here </p>
+            <p>{first_name} {last_name} </p>
+            <p>{bio} </p>
         </div>
     )
 }

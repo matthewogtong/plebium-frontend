@@ -6,14 +6,14 @@ import Story from "./Story"
 import CommentsList from "./CommentsList"
 
 function StoryPage({user, story}) {
-    // deconstruct story here. 
-    // deconstruct user here. 
+    // const {title, content, snaps, read_time, date_created} = story 
+    // const {first_name, last_name, bio } = user;
     return (
         <div>
             <MainHeader />
-            <UserInfo />
-            <Snaps />
-            <Story />
+            <UserInfo  />
+            <Snaps  />
+            <Story  />
             <CommentsList />            
         </div>
     )
