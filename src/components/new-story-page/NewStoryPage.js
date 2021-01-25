@@ -1,17 +1,22 @@
-import React, {useState} from "react";
+import React from "react";
 import NewStoryHeader from "./NewStoryHeader"
 import NewStoryForm from "./NewStoryForm"
 
 
 function NewStoryPage({storyTitle, storyContent, setStoryTitle, setStoryContent, handleSubmit}) {
-    const [title, setTitle] = useState("")
-    const [content, setContent] = useState("")
 
     return (
         <div>
-            <NewStoryHeader />
-            <NewStoryForm storyContent={storyContent} storyTitle={storyTitle} onSubmit={handleSubmit} />
-            <button onClick={handleSubmit}>submit new story</button>
+            <NewStoryHeader/>
+            <form onSubmit={handleSubmit}>
+                <NewStoryForm 
+                    storyContent={storyContent} 
+                    storyTitle={storyTitle} 
+                    setStoryContent={setStoryContent} 
+                    setStoryTitle={setStoryTitle} 
+                />
+                <input type="submit" value="Submit" />
+            </form>
         </div>
     )
 

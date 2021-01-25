@@ -12,6 +12,7 @@ function App() {
   const [topics, setTopics] = useState([])
   const [users, setUsers] = useState([])
   const [stories, setStories] = useState([])
+
   const [storyTitle, setStoryTitle] = useState("")
   const [storyContent, setStoryContent] = useState("")
 
@@ -41,20 +42,21 @@ function handleAddStory(newStory) {
 
 function handleSubmit(e) {
   e.preventDefault()
-  //ultimately gets redirected to the publish story page 
-
+  
   fetch("http://localhost:3000/stories", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-          title: storyTitle,
-          content: storyContent,
-      }),
-      })
-      .then((r) => r.json())
-      .then((newStory) => handleAddStory(newStory));
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: 1,
+      topic_id: 1,
+      title: storyTitle,
+      content: storyContent
+    })
+  })
+    .then(r => r.json())
+    .then(console.log)
 }
 
 
@@ -74,7 +76,13 @@ function handleSubmit(e) {
           <StoryPage />
         </Route>
         <Route path="/new-story">
-          <NewStoryPage handleSubmit={handleSubmit} />
+          <NewStoryPage 
+            handleSubmit={handleSubmit} 
+            storyTitle={storyTitle} 
+            setStoryTitle={setStoryTitle} 
+            storyContent={storyContent} 
+            setStoryContent={setStoryContent} 
+          />
         </Route>
         <Route path="/publish-story">
           <PublishStoryPage />
