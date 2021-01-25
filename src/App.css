@@ -94,23 +94,24 @@
   grid-gap: 3px;
   grid-template-columns: repeat(12, 1fr);
   grid-template-areas:
-      ". logo name . . . . . . . in start"
+      ". . name . . . . . . . in start"
 }
 
-.logo {
-  grid-area: logo;
-}
 
 .title-name {
   grid-area: name;
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 100px;
 }
 
 .sign-in {
   grid-area: in;
+  height: 50%;
 }
 
 .get-started {
   grid-area: start;
+  height: 50%;
 }
 
 /* TITLE ABOUT */
@@ -154,4 +155,13 @@
 
 .trending-story {
   grid-area: tstory;
+}
+
+/* HOME PAGE */
+#home-page {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
 }
