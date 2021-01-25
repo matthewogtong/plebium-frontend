@@ -10,6 +10,7 @@ import PublishStoryPage from "./publish-story/PublishStoryPage"
 
 
 function App() {
+
   const [topics, setTopics] = useState([])
   const [users, setUsers] = useState([])
   const [stories, setStories] = useState([])
@@ -17,6 +18,11 @@ function App() {
   const [storyTitle, setStoryTitle] = useState("")
   const [storyContent, setStoryContent] = useState("")
 
+  const [currentUser, setCurrentUser] = useState(null);
+
+  // LOGIN STATE
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [loginUsername, setLoginUsername] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:3000/topics")
@@ -25,16 +31,44 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/users")
-      .then((r) => r.json())
-      .then(setUsers);
-  }, []);
-
-  useEffect(() => {
     fetch("http://localhost:3000/stories")
       .then((r) => r.json())
       .then(setStories);
   }, []);
+
+
+  // USER FETCH
+   // auto-login
+  //  useEffect(() => {
+  //   fetch("http://localhost:3000/autologin")
+  //     .then((r) => r.json())
+  //     .then(setCurrentUser);
+  // }, []);
+
+// HANDLE LOGIN FUNCTION
+const handleLoginSubmit = () => {
+  console.log("logged in")
+  fetch("http://localhost:3000/users")
+    .then(r => r.json())
+    .then(userArr => {
+      userArr.forEach(user => { 
+        if (user.username === loginUsername) {
+          setIsLoggedIn(true)
+          setCurrentUser(user = {
+            username: user.username,
+            first_name: user.first_name,
+            last_name: user.last_name
+          }) 
+        }
+      })
+    })
+}
+
+console.log(isLoggedIn)
+console.log(currentUser)
+console.log(loginUsername)
+
+
 
 function handleAddStory(newStory) {
   const updatedStoriesArray = [newStory, ...stories]
@@ -65,7 +99,11 @@ function handleSubmit(e) {
     <div className="App">
       <Switch>
         <Route exact path="/">
-          <TitlePage /> 
+          <TitlePage 
+          loginUsername={loginUsername} 
+          setLoginUsername={setLoginUsername}
+          handleLoginSubmit={handleLoginSubmit}
+          /> 
         </Route>
         <Route path="/home">
           <HomePage topics={topics}/>
