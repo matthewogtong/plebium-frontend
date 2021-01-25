@@ -3,7 +3,7 @@ import MainHeader from "../MainHeader"
 import StoryList from "./StoryList"
 import UserInfo from "../UserInfo"
 
-function ProfilePage({users, stories}) {
+function ProfilePage({stories}) {
     // {users.map((user) => (
     //<UserInfo key={user.id} user={user} />
     //))}
@@ -11,9 +11,7 @@ function ProfilePage({users, stories}) {
         <div>
             <MainHeader />
             <StoryList stories={stories} />
-            {users.map((user) => (
-             <UserInfo key={user.id} user={user} />
-            ))}
+            <UserInfo  />
         </div>
     )
 

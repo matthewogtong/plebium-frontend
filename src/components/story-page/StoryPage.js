@@ -5,9 +5,9 @@ import Snaps from "./Snaps"
 import Story from "./Story"
 import CommentsList from "./CommentsList"
 
-function StoryPage({user, story}) {
+function StoryPage() {
     // const {title, content, snaps, read_time, date_created} = story 
-    // const {first_name, last_name, bio } = user;
+
     return (
         <div>
             <MainHeader />
