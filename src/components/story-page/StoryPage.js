@@ -6,6 +6,8 @@ import Story from "./Story"
 import CommentsList from "./CommentsList"
 
 function StoryPage({user, story}) {
+    // deconstruct story here. 
+    // deconstruct user here. 
     return (
         <div>
             <MainHeader />
