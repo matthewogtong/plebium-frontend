@@ -18,7 +18,7 @@ function App() {
   const [storyTitle, setStoryTitle] = useState("")
   const [storyContent, setStoryContent] = useState("")
 
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState([]);
 
   // LOGIN STATES
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -29,6 +29,8 @@ function App() {
   const [newFirstName, setNewFirstName] = useState("")
   const [newLastName, setNewLastName] = useState("")
   const [newBio, setNewBio] = useState("")
+
+  //USER TOPICS
 
   useEffect(() => {
     fetch("http://localhost:3000/topics")

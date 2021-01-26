@@ -6,11 +6,10 @@ import TopicList from "./TopicList"
 
 function HomePage({ topics, currentUser }) {
 
-  console.log(currentUser)
   return (
     <div id="home-page">
       <MainHeader currentUser={currentUser}/>
-      <TopicList topics={topics} />
+      <TopicList topics={topics} currentUser={currentUser}/>
       <TrendingList />
       <BookmarkList />
     </div>

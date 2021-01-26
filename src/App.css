@@ -78,11 +78,11 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 25% 25% 25% 25% 25%;
   grid-template-areas:
-      ". . h2 h2 h2 . . . . . . ."
+      ". . . . . h2 h2 h2 . . . ."
       ". . . . . . . . . . . ."
-      ". . p p p . . . . . . ." 
+      ". . . . . p p p . . . ." 
       ". . . . . . . . . . . ."
-      ". . . astart . . . . . . . ."
+      ". . . . . . astart . . . . ."
 }
 
 .about-h2 {
@@ -100,7 +100,7 @@
 /* TITLE TRENDING STORIES */
 .trending-list {
   display: grid;
-  margin-top: 20%;
+  margin-top: 10%;
   grid-gap: 3px;
   grid-template-columns: repeat(12, 1fr);
   grid-template-areas: 
@@ -114,6 +114,7 @@
 /* HOME PAGE */
 .main-header {
   display: grid;
+  border: 2px solid black;
   grid-gap: 3px;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1fr 1fr;
@@ -158,12 +159,27 @@
   display: grid;
   grid-gap: 3px;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 200px 200px;
+  grid-template-rows: 30px auto;
   grid-template-areas:
-      ". . . . ti ti"
-      ". . . . ti ti"
+      ". . . . th th"
+      ". . . . tc tc"
+      ". . . . dta dta"
+}
+
+.topic-header {
+  grid-area: th;
+}
+
+.topics-container {
+  grid-area: tc;
 }
 
 .topic-item {
   grid-area: ti;
 }
+
+.dropdown-topic-add {
+  grid-area: dta;
+}
+
+/* STORY PAGE */
