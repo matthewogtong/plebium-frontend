@@ -6,7 +6,7 @@ function TopicList({topics}) {
         <Topic key={topic.id} topic={topic} />
     ))
     return (
-        <div>
+        <div className="topic-list">
             {topicItems}
         </div>
     )

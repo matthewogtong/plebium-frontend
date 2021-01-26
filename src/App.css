@@ -28,7 +28,7 @@
 
 
 /* TITLE PAGE */
-#title-page {
+/* #title-page {
   display: grid;
   grid-gap: 3px;
   grid-template-columns: repeat(12, 1fr);
@@ -38,15 +38,14 @@
       ". about about about about about about about about about about ."
       ". tl tl tl tl tl tl tl tl tl tl ."
       
-}
+} */
 /* TITLE HEADER */
 .title-header {
   display: grid;
-  grid-area: header;
   grid-gap: 3px;
   grid-template-columns: repeat(12, 1fr);
   grid-template-areas:
-      ". . name . . . . . . in start ."
+      ". name . . . . . . . in start ."
 }
 
 
@@ -61,19 +60,20 @@
   grid-area: in;
   height: auto;
   margin-top: auto;
+  margin-bottom: auto;
 }
 
 .get-started {
   grid-area: start;
   height: auto;
   margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* TITLE ABOUT */
 .title-about {
   display: grid;
   margin-top: 10%;
-  grid-area: about;
   grid-gap: 3px;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 25% 25% 25% 25% 25%;
@@ -101,9 +101,8 @@
 .trending-list {
   display: grid;
   margin-top: 20%;
-  grid-area: tl;
   grid-gap: 3px;
-  grid-template-columns: repeat(13, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   grid-template-areas: 
       ". . . . . . tstory . . . . . ."
 }
@@ -113,17 +112,58 @@
 }
 
 /* HOME PAGE */
-#home-page {
-
+.main-header {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+      ". mht . . . . . . . mhwr mhp ."
+      ". mhw mhn . . . . . . . . ."
 }
 
 .main-header-title {
   font-family: 'Fredericka the Great', cursive;
   font-size: 80px;
-  text-align: left;
+  grid-area: mht;
+}
+
+.main-header-welcome {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 50px;
+  grid-area: mhw;
+}
+
+.main-header-name {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 50px;
+  grid-area: mhn;
 }
 
 .main-header-write {
-  float: right;
+  grid-area: mhwr;
+  height: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
+.main-header-profile {
+  grid-area: mhp;
+  height: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.topic-list {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 200px 200px;
+  grid-template-areas:
+      ". . . . ti ti"
+      ". . . . ti ti"
+}
+
+.topic-item {
+  grid-area: ti;
+}
