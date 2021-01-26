@@ -18,7 +18,7 @@ function App() {
   const [storyTitle, setStoryTitle] = useState("")
   const [storyContent, setStoryContent] = useState("")
 
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState([]);
 
   // LOGIN STATES
   const [isLoggedIn, setIsLoggedIn] = useState(false)
