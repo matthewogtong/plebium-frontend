@@ -4,13 +4,14 @@ import UserInfo from "../UserInfo"
 import Snaps from "./Snaps"
 import Story from "./Story"
 import CommentsList from "./CommentsList"
+// import NavBar from "../NavBar";
 
-function StoryPage() {
+function StoryPage({currentUser}) {
     // const {title, content, snaps, read_time, date_created} = story 
 
     return (
         <div>
-            <MainHeader />
+            <MainHeader currentUser={currentUser}/>
             <UserInfo  />
             <Snaps  />
             <Story  />

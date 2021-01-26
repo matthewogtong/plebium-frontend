@@ -7,6 +7,7 @@ import ProfilePage from "./profile-page/ProfilePage"
 import StoryPage from "./story-page/StoryPage"
 import NewStoryPage from "./new-story-page/NewStoryPage"
 import PublishStoryPage from "./publish-story/PublishStoryPage"
+import NavBar from "./NavBar";
 
 
 function App() {
@@ -136,6 +137,7 @@ function handleSubmit(e) {
             <Redirect to="/home" />
           )}
         </Route>
+
         <Route path="/home">
           <HomePage 
           topics={topics} 
@@ -143,10 +145,10 @@ function handleSubmit(e) {
           />
         </Route>
         <Route path="/profile/:id">
-          <ProfilePage users={users} stories={stories} onDeleteStory={handleRemoveStory}/>
+          <ProfilePage currentUser={currentUser} onDeleteStory={handleRemoveStory}/>
         </Route>
         <Route path="/story">
-          <StoryPage />
+          <StoryPage currentUser={currentUser}/>
         </Route>
         <Route path="/new-story">
           <NewStoryPage

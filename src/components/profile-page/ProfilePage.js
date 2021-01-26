@@ -2,16 +2,21 @@ import React from "react";
 import MainHeader from "../MainHeader"
 import StoryList from "./StoryList"
 import UserInfo from "../UserInfo"
+// import NavBar from "../NavBar";
 
-function ProfilePage({stories, onDeleteStory}) {
+function ProfilePage({currentUser, onDeleteStory}) {
 
-    // {users.map((user) => (
-    //<UserInfo key={user.id} user={user} />
-    //))}
+let userStories;
+  if (currentUser.stories) {
+    userStories = currentUser.stories.map((story) => console.log(story));
+  } else {
+    userStories = <p>No stories to display!</p>;
+  }
+
     return (
         <div>
-            <MainHeader />
-            <StoryList stories={stories} onDeleteStory={onDeleteStory} />
+            <MainHeader currentUser={currentUser}/>
+            <StoryList currentUser={currentUser} onDeleteStory={onDeleteStory} />
             <UserInfo  />
         </div>
     )

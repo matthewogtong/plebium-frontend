@@ -2,7 +2,7 @@ import React from "react";
 
 function StoryTitle({storyTitle, setStoryTitle}) {
     return (
-        <div className="new-plant-form">
+        <div className="story-title-input">
           <h3>Title</h3>
           <input
               type="text"

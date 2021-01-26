@@ -1,11 +1,11 @@
 import React from "react";
 import ProfileStory from "./ProfileStory"
 
-function StoryList({stories, onDeleteStory}) {
+function StoryList({currentUser}) {
+    //map over 
     return (
         <div>
-             {stories.map((story) => 
-            <ProfileStory key={story.id} story={story} onDeleteStory={onDeleteStory} />)}
+        <h1>Stories</h1>
         </div>
     )
 }
