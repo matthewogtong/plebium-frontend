@@ -79,10 +79,14 @@ const handleCreateAccountSubmit = () => {
     })
 }
 
-
 function handleAddStory(newStory) {
   const updatedStoriesArray = [newStory, ...stories]
   setStories(updatedStoriesArray)
+}
+
+function handleRemoveStory(id) {
+  const updatedStoriesArray = stories.filter((story) => story.id !== id);
+  setStories(updatedStoriesArray);
 }
 
 function handleSubmit(e) {
@@ -102,7 +106,11 @@ function handleSubmit(e) {
   })
     .then(r => r.json())
     .then(console.log)
+    setStoryTitle("")
+    setStoryContent("")
 }
+
+
 
 
   return (
@@ -135,7 +143,7 @@ function handleSubmit(e) {
           />
         </Route>
         <Route path="/profile/:id">
-          <ProfilePage users={users} stories={stories} />
+          <ProfilePage users={users} stories={stories} onDeleteStory={handleRemoveStory}/>
         </Route>
         <Route path="/story">
           <StoryPage />
