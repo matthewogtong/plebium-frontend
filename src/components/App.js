@@ -61,6 +61,7 @@ const handleLoginSubmit = () => {
           setIsLoggedIn(true)
           setCurrentUser(user) 
           setUserStories(user.stories)
+          setUserBookmarks(user.bookmarks)
         }
       })
     })
@@ -129,6 +130,18 @@ const handleDeleteProfileStory = (storyId) => {
     })
 };
 
+const handleDeleteBookmark = (bookmarkId) => {
+  fetch(`http://localhost:3000/bookmarks/${bookmarkId}`, {
+    method: "DELETE"
+  })
+    .then(r => r.json())
+    .then(deletedBookmark => {
+      const updatedBookmarks = userBookmarks.filter(
+        (bookmark) => bookmark.id !== deletedBookmark.id
+      )
+      setUserBookmarks(updatedBookmarks)
+    })
+}
 //PROFILE PARAMS
 
 
@@ -158,6 +171,9 @@ const handleDeleteProfileStory = (storyId) => {
 
         <Route path="/home">
           <HomePage
+            handleDeleteBookmark={handleDeleteBookmark}
+            userBookmarks={userBookmarks}
+            setUserBookmarks={setUserBookmarks}
             topics={topics}
             currentUser={currentUser}
             stories={stories}

@@ -1,11 +1,12 @@
 import React from "react";
 import TrendingStory from "./TrendingStory"
 
-function TrendingList({ currentUser, stories }) {
+function TrendingList({ currentUser, stories, userBookmarks, setUserBookmarks }) {
 
     let trendingStories;
     if (stories) {
-      trendingStories = stories.map((story) => <TrendingStory key={story.id} story={story}/>)
+      trendingStories = stories.map((story) => <TrendingStory key={story.id} story={story} currentUser={currentUser} userBookmarks={userBookmarks}
+      setUserBookmarks={setUserBookmarks}/>)
     } else {
       trendingStories = <p>No stories to display!</p>;
     }

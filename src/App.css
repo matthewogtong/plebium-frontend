@@ -220,6 +220,10 @@
   grid-area: bookmarkstory;
 }
 
+.bookmark-delete-button {
+  text-align: left;
+}
+
 /* PROFILE PAGE */
 
 .profile-container {

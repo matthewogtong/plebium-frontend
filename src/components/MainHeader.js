@@ -1,7 +1,7 @@
 import React from "react";
-
 import NavBar from "./NavBar";
 import { useSpring, animated } from "react-spring"
+
 function MainHeader({ currentUser }) {
   const props = useSpring({
     opacity: 1,
