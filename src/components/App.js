@@ -103,7 +103,6 @@ function handleSubmit(e) {
     })
   })
     .then(r => r.json())
-    .then(console.log)
     setStoryTitle("")
     setStoryContent("")
 }
