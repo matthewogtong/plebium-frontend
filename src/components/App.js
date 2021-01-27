@@ -16,6 +16,7 @@ function App() {
   const [storyTitle, setStoryTitle] = useState("")
   const [storyContent, setStoryContent] = useState("")
   const [readTime, setReadTime] = useState("")
+  const [storyTopic, setStoryTopic] = useState("")
 
 
   const [currentUser, setCurrentUser] = useState([]);
@@ -91,6 +92,8 @@ function handleRemoveStory(id) {
   setStories(updatedStoriesArray);
 }
 
+// right now, it's always rendering as user1. should we remove this so it 
+// persists with currentUser?
 function handleSubmit(e) {
   e.preventDefault()
   
@@ -110,6 +113,7 @@ function handleSubmit(e) {
     .then(console.log)
     setStoryTitle("")
     setStoryContent("")
+    // router.history.push('/home');
 }
 
 //PROFILE PARAMS
@@ -161,6 +165,8 @@ function handleSubmit(e) {
             setStoryContent={setStoryContent}
             readTime={readTime}
             setReadTime={setReadTime}
+            storyTopic={storyTopic}
+            setStoryTopic={setStoryTopic}
           />
         </Route>
         <Route path="/publish-story">
