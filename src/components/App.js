@@ -24,6 +24,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [loginUsername, setLoginUsername] = useState("")
   const [userStories, setUserStories] = useState([])
+  const [userBookmarks, setUserBookmarks] = useState([])
 
   // CREATE ACCOUNT STATES
   const [newUsername, setNewUsername] = useState("")

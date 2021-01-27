@@ -238,3 +238,14 @@
 .user-info {
   grid-area: userinfo
 }
+
+.snap-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  justify-content: right;
+}
+
+.profile-snap-div {
+  text-align: right;
+}

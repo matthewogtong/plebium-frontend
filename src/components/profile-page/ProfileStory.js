@@ -16,6 +16,10 @@ function ProfileStory({story, handleDeleteProfileStory}) {
             <Button variant="light">View Story</Button>
             <br />
             <Button onClick={e => handleDeleteProfileStory(story.id)} variant="danger">Delete Story</Button>
+            <br />
+            <div className="profile-snap-div">
+              <em>{story.snaps ? story.snaps : 0}</em><img className="snap-img" src="../../snapfinger.jpg"></img>
+            </div>
           </Card.Body>
         </Card>
       </div>
