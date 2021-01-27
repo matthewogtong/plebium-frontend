@@ -3,11 +3,10 @@ import React from "react";
 function StoryTitle({storyTitle, setStoryTitle}) {
     return (
         <div className="story-title-input">
-          <h3>Title</h3>
+          <h3>article title</h3>
           <input
               type="text"
               name="title"
-              placeholder="Title..."
               value={storyTitle}
               onChange={(e) => setStoryTitle(e.target.value)}
             />

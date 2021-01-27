@@ -1,9 +1,9 @@
 import React from "react";
-// import Jumbotron from "react-bootstrap/Jumbotron"
-// import Button from "react-bootstrap/Button"
-// import { Link } from "react-router-dom"
+import Jumbotron from "react-bootstrap/Jumbotron"
+import Button from "react-bootstrap/Button"
+import { Link } from "react-router-dom"
 
-function NewStoryHeader() {
+function NewStoryHeader({ handleSubmit }) {
     // function handlePublishButton() {
     //     // <Route >
     //     // <Redirect to="/publish-story" />
@@ -12,16 +12,31 @@ function NewStoryHeader() {
     //         </Link>
     // }
     return (
-        <h1>new story header</h1>
-    )
+      <Jumbotron>
+        <h1>new story time</h1>
+        <br />
+        <p>"Start before you’re ready."</p>
+        <p> - Steven Pressfield</p>
+        <hr />
+        <br />
 
-    // return (
-    //  <Link to="/story-page">
-    //     <button type="button">
-    //     Publish Story
-    //     </button>
-    // </Link>
-    // )
+        <div>
+          <Link to="/home">
+            <Button variant="light">Home</Button>
+          </Link>
+        </div>
+        <br />
+        <div>
+          <Button
+            type="submit"
+            onClick={handleSubmit}
+            variant="outline-success"
+          >
+            Publish
+          </Button>
+        </div>
+      </Jumbotron>
+    );
 }
 
 export default NewStoryHeader;

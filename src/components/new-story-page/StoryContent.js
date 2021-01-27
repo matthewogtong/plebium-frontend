@@ -4,15 +4,17 @@ import React from "react";
 function StoryContent({storyContent, setStoryContent}) {
     return (
         <div className="story-content-input">
-        <h3>Content</h3>
-        <input
+          <h3>content</h3>
+          <textarea
+          id="styled"
           type="text"
           name="content"
           placeholder="Your Story Here"
           value={storyContent}
           onChange={(e) => setStoryContent(e.target.value)}
-        />
-    </div>
+        >
+          </textarea>
+      </div>
     )
 }
 

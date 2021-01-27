@@ -253,3 +253,31 @@
 .profile-snap-div {
   text-align: right;
 }
+
+/* NEW STORY PAGE */
+.story-title-input {
+  font-family: 'Open Sans', sans-serif;
+
+}
+.story-title-input:hover {
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+.story-content-input {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.story-content-input textarea {
+  width: 800px;
+	height: 800px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: 'Open Sans', sans-serif;
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+
+.story-topic-list {
+  
+}

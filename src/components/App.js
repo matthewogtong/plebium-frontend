@@ -13,6 +13,7 @@ function App() {
   const [topics, setTopics] = useState([])
   const [stories, setStories] = useState([])
 
+  // NEW STORY STATES
   const [storyTitle, setStoryTitle] = useState("")
   const [storyContent, setStoryContent] = useState("")
   const [readTime, setReadTime] = useState("")
@@ -161,6 +162,8 @@ const handleDeleteBookmark = (bookmarkId) => {
       setUserBookmarks(updatedBookmarks)
     })
 }
+
+
 //PROFILE PARAMS
 
 
@@ -221,6 +224,7 @@ const handleDeleteBookmark = (bookmarkId) => {
             setStoryTopic={setStoryTopic}
             snaps={snaps}
             setSnaps={setSnaps}
+            topics={topics}
           />
         </Route>
       </Switch>

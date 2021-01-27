@@ -4,31 +4,33 @@ import Dropdown from "react-bootstrap/Dropdown"
 
 function NewStoryInputs({readTime, setReadTime, topics, storyTopic, setStoryTopic}) {
 
-    // const addStoryTopic = topics.map((topic) => {
-    //     return <Dropdown.Item key={topic.id} topic={topic}>{topic.name}</Dropdown.Item>
-    //   })
+    const addStoryTopic = topics.map((topic) => {
+        return <Dropdown.Item key={topic.id} topic={topic}>{topic.name}</Dropdown.Item>
+      })
+
+    console.log(storyTopic)
 
         return (
-            <div className="story-readtime-input">
-              <input
-                  type="number"
-                  name="readtime"
-                  placeholder="Read Time"
-                  value={readTime} 
-                  onChange={(e) => setReadTime(parseInt(e.target.value))}
-                /> Minutes To Read
-
-                <div className="topic-list">
-                    <p className="topic-header">add topic to story</p>
-                    <div className="topics-container"></div>
-                    <div className="dropdown-topic-add">
-                        <DropdownButton id="dropdown-basic-button" title="add topic">
-
-                        </DropdownButton>
-                    </div>
-                    </div>
+          <div className="story-readtime-input">
+            <p>read time</p>
+            <input
+              type="number"
+              name="readtime"
+              placeholder="mins"
+              value={readTime}
+              onChange={(e) => setReadTime(parseInt(e.target.value))}
+            />{" "}
+            <br />
+            <div className="story-topic-list">
+              <p className="topic-header">choose a topic</p>
+              <div className="dropdown-topic-add">
+                <DropdownButton value={storyTopic} onChange={e => setStoryTopic(e.target.value)} id="dropdown-basic-button" title={storyTopic}>
+                  {addStoryTopic}
+                </DropdownButton>
+              </div>
             </div>
-        )
+          </div>
+        );
 }
 
 export default NewStoryInputs;
