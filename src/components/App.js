@@ -10,12 +10,13 @@ import PublishStoryPage from "./publish-story/PublishStoryPage"
 
 
 function App() {
-
   const [topics, setTopics] = useState([])
   const [stories, setStories] = useState([])
 
   const [storyTitle, setStoryTitle] = useState("")
   const [storyContent, setStoryContent] = useState("")
+  const [readTime, setReadTime] = useState("")
+
 
   const [currentUser, setCurrentUser] = useState([]);
 
@@ -111,7 +112,7 @@ function handleSubmit(e) {
     setStoryContent("")
 }
 
-
+//PROFILE PARAMS
 
 
   return (
@@ -158,6 +159,8 @@ function handleSubmit(e) {
             setStoryTitle={setStoryTitle}
             storyContent={storyContent}
             setStoryContent={setStoryContent}
+            readTime={readTime}
+            setReadTime={setReadTime}
           />
         </Route>
         <Route path="/publish-story">
