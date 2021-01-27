@@ -219,3 +219,22 @@
 .bookmark-story-container {
   grid-area: bookmarkstory;
 }
+
+/* PROFILE PAGE */
+
+.profile-container {
+  display: grid;
+  margin-top: 5%;
+  grid-gap: 3px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas:
+      ". userinfo userinfo . . . . profilestory profilestory profilestory profilestory ."
+}
+
+.profile-story-container {
+  grid-area: profilestory;
+}
+
+.user-info {
+  grid-area: userinfo
+}

@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
-import '../App.css';
+import '../App.css'
 import HomePage from "./home-page/HomePage"
 import TitlePage from "./title-page/TitlePage"
 import ProfilePage from "./profile-page/ProfilePage"
@@ -18,7 +18,7 @@ function App() {
   const [readTime, setReadTime] = useState("")
 
 
-  const [currentUser, setCurrentUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState([])
 
   // LOGIN STATES
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -35,16 +35,16 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:3000/topics")
       .then((r) => r.json())
-      .then(setTopics);
-  }, []);
+      .then(setTopics)
+  }, [])
 
   // STORIES
 
   useEffect(() => {
     fetch("http://localhost:3000/stories")
       .then((r) => r.json())
-      .then(setStories);
-  }, []);
+      .then(setStories)
+  }, [])
 
 // HANDLE LOGIN FUNCTION
 const handleLoginSubmit = () => {
@@ -81,15 +81,6 @@ const handleCreateAccountSubmit = () => {
     })
 }
 
-function handleAddStory(newStory) {
-  const updatedStoriesArray = [newStory, ...stories]
-  setStories(updatedStoriesArray)
-}
-
-function handleRemoveStory(id) {
-  const updatedStoriesArray = stories.filter((story) => story.id !== id);
-  setStories(updatedStoriesArray);
-}
 
 function handleSubmit(e) {
   e.preventDefault()
@@ -111,6 +102,19 @@ function handleSubmit(e) {
     setStoryTitle("")
     setStoryContent("")
 }
+
+const handleDeleteProfileStory = (storyId) => {
+  return fetch(`http://localhost:3000/stories/${storyId}`, {
+    method: "DELETE",
+  })
+    .then((r) => r.json())
+    .then((deletedStory) => {
+      const updatedStoriesArray = stories.filter(
+        (story) => story.id !== deletedStory.id
+      )
+      setStories(updatedStoriesArray)
+    })
+};
 
 //PROFILE PARAMS
 
@@ -147,7 +151,7 @@ function handleSubmit(e) {
           />
         </Route>
         <Route path="/profile/:id">
-          <ProfilePage currentUser={currentUser} onDeleteStory={handleRemoveStory}/>
+          <ProfilePage currentUser={currentUser} handleDeleteProfileStory={handleDeleteProfileStory}/>
         </Route>
         <Route path="/story">
           <StoryPage currentUser={currentUser}/>
@@ -168,7 +172,7 @@ function handleSubmit(e) {
         </Route>
       </Switch>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

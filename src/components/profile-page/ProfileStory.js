@@ -1,23 +1,22 @@
 import React from "react";
+import { Card, Button } from "react-bootstrap"
 
-function ProfileStory({story, onDeleteStory}) {
-    const {id, title, content} = story
-    //also needs to pass down claps prop 
-
-    function handleStoryDelete() {
-        fetch(`http://localhost:3000/${id}`, {
-          method: "DELETE",
-        });
-        onDeleteStory(id);
-      }
+function ProfileStory({story, handleDeleteProfileStory}) {
 
     return (
-        <div>
-            <h3>{title}</h3>
-            <h5>{content}</h5>
-            <button className="delete-story-button" onClick={handleStoryDelete}>Delete Story</button>
-        </div>
-    )
+      <div>
+        <Card>
+          <Card.Header as="h5">{story.title}</Card.Header>
+          <Card.Body>
+            <Card.Title>{story.topic} | {story.read_time}</Card.Title>
+            <Card.Text>{story.title}</Card.Text>
+            <Button variant="light">View Story</Button>
+            <br />
+            <Button onClick={e => handleDeleteProfileStory(story.id)} variant="danger">Delete Story</Button>
+          </Card.Body>
+        </Card>
+      </div>
+    );
 }
 
 export default ProfileStory;

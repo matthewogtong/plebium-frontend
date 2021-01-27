@@ -3,23 +3,17 @@ import MainHeader from "../MainHeader"
 import StoryList from "./StoryList"
 import UserInfo from "../UserInfo"
 
-function ProfilePage({currentUser, onDeleteStory}) {
-
-
-let userStories;
-  if (currentUser.stories) {
-    userStories = currentUser.stories.map((story) => console.log(story));
-  } else {
-    userStories = <p>No stories to display!</p>;
-  }
+function ProfilePage({currentUser, handleDeleteProfileStory}) {
 
     return (
-        <div>
-            <MainHeader currentUser={currentUser}/>
-            <StoryList currentUser={currentUser} onDeleteStory={onDeleteStory} />
-            <UserInfo  />
+      <div>
+        <MainHeader currentUser={currentUser} />
+        <div className="profile-container">
+          <StoryList currentUser={currentUser} handleDeleteProfileStory={handleDeleteProfileStory} />
+          <UserInfo currentUser={currentUser} />
         </div>
-    )
+      </div>
+    );
 
 }
 

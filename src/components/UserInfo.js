@@ -1,14 +1,21 @@
-import React from "react";
+import React from "react"
+import Card from "react-bootstrap/Card"
 
-function UserInfo() {
-    //had to delete deconstruction because we are passing in currentUser instead of User
-    //
+function UserInfo({ currentUser }) {
+
     return (
-        <div className="user-info">
-            <p>name here </p>
-            <p>bio here  </p>
-        </div>
+      <div className="user-info">
+        <Card border="dark" style={{ width: "18rem" }}>
+          <Card.Header>{currentUser.username}</Card.Header>
+          <Card.Body>
+            <Card.Title>Your Bio</Card.Title>
+            <Card.Text>
+              {currentUser.bio}
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </div>
     )
 }
 
-export default UserInfo;
+export default UserInfo
