@@ -4,9 +4,9 @@ import Dropdown from "react-bootstrap/Dropdown"
 
 function NewStoryInputs({readTime, setReadTime, topics, storyTopic, setStoryTopic}) {
 
-    // const addStoryTopic = topics.map((topic) => {
-    //     return <Dropdown.Item key={topic.id} topic={topic}>{topic.name}</Dropdown.Item>
-    //   })
+    const addStoryTopic = topics.map((topic) => {
+        return <Dropdown.Item key={topic.id} topic={topic}>{topic.name}</Dropdown.Item>
+      })
 
         return (
             <div className="story-readtime-input">
