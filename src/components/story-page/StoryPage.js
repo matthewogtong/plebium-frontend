@@ -6,16 +6,16 @@ import Story from "./Story"
 import CommentsList from "./CommentsList"
 // import NavBar from "../NavBar";
 
-function StoryPage({currentUser, handleResponseSubmit}) {
+function StoryPage({storyTitle, storyContent, readTime, snaps, newResponse, setNewResponse, currentUser, handleResponseSubmit}) {
     // const {title, content, snaps, read_time, date_created} = story 
 
     return (
         <div>
             <MainHeader currentUser={currentUser}/>
-            <UserInfo  />
-            <Snaps  />
-            <Story  />
-            <CommentsList handleResponseSubmit={handleResponseSubmit} />            
+            <UserInfo currentUser={currentUser}/>
+            <Snaps snaps={snaps} />
+            <Story storyTitle={storyTitle} storyContent={storyContent} readTime={readTime} />
+            <CommentsList newResponse={newResponse} setNewResponse={setNewResponse} handleResponseSubmit={handleResponseSubmit} />            
         </div>
     )
 
