@@ -3,7 +3,9 @@ import NewStoryHeader from "./NewStoryHeader"
 import NewStoryForm from "./NewStoryForm"
 
 
-function NewStoryPage({storyTitle, storyContent, setStoryTitle, setStoryContent, handleSubmit}) {
+function NewStoryPage({storyTitle, storyContent, setStoryTitle, setStoryContent, readTime, setReadTime, handleSubmit}) {
+    // set read_time
+    // set topic 
 
     return (
         <div>
@@ -14,6 +16,8 @@ function NewStoryPage({storyTitle, storyContent, setStoryTitle, setStoryContent,
                     storyTitle={storyTitle} 
                     setStoryContent={setStoryContent} 
                     setStoryTitle={setStoryTitle} 
+                    readTime={readTime}
+                    setReadTime={setReadTime}
                 />
                 <input type="submit" value="Submit" />
             </form>

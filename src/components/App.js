@@ -7,17 +7,17 @@ import ProfilePage from "./profile-page/ProfilePage"
 import StoryPage from "./story-page/StoryPage"
 import NewStoryPage from "./new-story-page/NewStoryPage"
 import PublishStoryPage from "./publish-story/PublishStoryPage"
-import NavBar from "./NavBar";
 
 
 function App() {
-
   const [topics, setTopics] = useState([])
   const [users, setUsers] = useState([])
   const [stories, setStories] = useState([])
 
   const [storyTitle, setStoryTitle] = useState("")
   const [storyContent, setStoryContent] = useState("")
+  const [readTime, setReadTime] = useState("")
+
 
   const [currentUser, setCurrentUser] = useState([]);
 
@@ -111,7 +111,7 @@ function handleSubmit(e) {
     setStoryContent("")
 }
 
-
+//PROFILE PARAMS
 
 
   return (
@@ -157,6 +157,8 @@ function handleSubmit(e) {
             setStoryTitle={setStoryTitle}
             storyContent={storyContent}
             setStoryContent={setStoryContent}
+            readTime={readTime}
+            setReadTime={setReadTime}
           />
         </Route>
         <Route path="/publish-story">
