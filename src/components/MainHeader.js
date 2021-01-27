@@ -1,24 +1,18 @@
 import React from "react";
 
 import NavBar from "./NavBar";
-
+import { useSpring, animated } from "react-spring"
 function MainHeader({ currentUser }) {
-
-//   function handleWriteStory() {
-    
-
-//   }
-
-//   function handleViewProfile(id) {
-   
-//   }
-
+  const props = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+  })
 
     return (
       <div className="main-header">
-          <h1 className="main-header-title">Plebium</h1>
-          <h4 className="main-header-welcome">Welcome Back</h4>
-          <h3 className="main-header-name">{currentUser.first_name} {currentUser.last_name}</h3>
+          <animated.h1 style={props} className="main-header-title">Plebium</animated.h1>
+          <animated.h4 style={props} className="main-header-welcome">Welcome Back</animated.h4>
+          <animated.h3  style={props} className="main-header-name">{currentUser.first_name} {currentUser.last_name}</animated.h3>
         <NavBar />
       </div>
     );

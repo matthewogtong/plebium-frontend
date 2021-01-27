@@ -13,7 +13,7 @@ function BookmarkList({ currentUser }) {
   }
   return (
     <div className="bookmark-list">
-      <h6 className="bookmark-list-header">BOOKMARK STORIES</h6>
+      <h6 className="bookmark-list-header">BOOKMARKED STORIES</h6>
       <div className="bookmark-story-container">{bookmarkStories}</div>
     </div>
   );

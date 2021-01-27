@@ -23,6 +23,7 @@ function App() {
   // LOGIN STATES
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [loginUsername, setLoginUsername] = useState("")
+  const [userStories, setUserStories] = useState([])
 
   // CREATE ACCOUNT STATES
   const [newUsername, setNewUsername] = useState("")
@@ -55,10 +56,12 @@ const handleLoginSubmit = () => {
         if (user.username === loginUsername) {
           setIsLoggedIn(true)
           setCurrentUser(user) 
+          setUserStories(user.stories)
         }
       })
     })
 }
+
 
 // HANDLE CREATE ACCOUNT FUNCTION
 const handleCreateAccountSubmit = () => {
@@ -78,6 +81,7 @@ const handleCreateAccountSubmit = () => {
     .then(newUser => {
       setCurrentUser(newUser)
       setIsLoggedIn(true)
+      setUserStories(newUser.stories)
     })
 }
 
@@ -109,10 +113,10 @@ const handleDeleteProfileStory = (storyId) => {
   })
     .then((r) => r.json())
     .then((deletedStory) => {
-      const updatedStoriesArray = stories.filter(
+      const updatedStoriesArray = userStories.filter(
         (story) => story.id !== deletedStory.id
       )
-      setStories(updatedStoriesArray)
+      setUserStories(updatedStoriesArray)
     })
 };
 
@@ -144,17 +148,21 @@ const handleDeleteProfileStory = (storyId) => {
         </Route>
 
         <Route path="/home">
-          <HomePage 
-          topics={topics} 
-          currentUser={currentUser}
-          stories={stories}
+          <HomePage
+            topics={topics}
+            currentUser={currentUser}
+            stories={stories}
           />
         </Route>
         <Route path="/profile/:id">
-          <ProfilePage currentUser={currentUser} handleDeleteProfileStory={handleDeleteProfileStory}/>
+          <ProfilePage
+            currentUser={currentUser}
+            handleDeleteProfileStory={handleDeleteProfileStory}
+            userStories={userStories}
+          />
         </Route>
         <Route path="/story">
-          <StoryPage currentUser={currentUser}/>
+          <StoryPage currentUser={currentUser} />
         </Route>
         <Route path="/new-story">
           <NewStoryPage
@@ -172,7 +180,7 @@ const handleDeleteProfileStory = (storyId) => {
         </Route>
       </Switch>
     </div>
-  )
+  );
 }
 
 export default App

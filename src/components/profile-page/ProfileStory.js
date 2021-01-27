@@ -1,7 +1,10 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap"
+import { useSpring, animated } from "react-spring"
 
 function ProfileStory({story, handleDeleteProfileStory}) {
+
+  const props = useSpring({opacity: 1, from: {opacity: 0}})
 
     return (
       <div>

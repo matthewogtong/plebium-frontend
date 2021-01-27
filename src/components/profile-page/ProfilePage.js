@@ -3,13 +3,17 @@ import MainHeader from "../MainHeader"
 import StoryList from "./StoryList"
 import UserInfo from "../UserInfo"
 
-function ProfilePage({currentUser, handleDeleteProfileStory}) {
+function ProfilePage({currentUser, handleDeleteProfileStory, userStories}) {
 
     return (
       <div>
         <MainHeader currentUser={currentUser} />
         <div className="profile-container">
-          <StoryList currentUser={currentUser} handleDeleteProfileStory={handleDeleteProfileStory} />
+          <StoryList
+            currentUser={currentUser}
+            handleDeleteProfileStory={handleDeleteProfileStory}
+            userStories={userStories}
+          />
           <UserInfo currentUser={currentUser} />
         </div>
       </div>
