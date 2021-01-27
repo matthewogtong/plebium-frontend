@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import React, {useEffect, useState} from "react"
-import { Route, Switch, Redirect } from "react-router-dom"
-import '../App.css'
-=======
 import React, {useEffect, useState} from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom"
 import '../App.css';
->>>>>>> new-story-render
 import HomePage from "./home-page/HomePage"
 import TitlePage from "./title-page/TitlePage"
 import ProfilePage from "./profile-page/ProfilePage"
