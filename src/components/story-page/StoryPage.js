@@ -6,7 +6,7 @@ import Story from "./Story"
 import CommentsList from "./CommentsList"
 // import NavBar from "../NavBar";
 
-function StoryPage({currentUser}) {
+function StoryPage({currentUser, handleResponseSubmit}) {
     // const {title, content, snaps, read_time, date_created} = story 
 
     return (
@@ -15,7 +15,7 @@ function StoryPage({currentUser}) {
             <UserInfo  />
             <Snaps  />
             <Story  />
-            <CommentsList />            
+            <CommentsList handleResponseSubmit={handleResponseSubmit} />            
         </div>
     )
 

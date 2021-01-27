@@ -1,16 +1,16 @@
 import React from "react";
 import NewStoryHeader from "./NewStoryHeader"
 import NewStoryForm from "./NewStoryForm"
-import { withRouter } from "react-router-dom"
+// import { withRouter } from "react-router-dom"
 
 
-function NewStoryPage({topics, storyTitle, storyContent, setStoryTitle, setStoryContent, readTime, setReadTime, storyTopic, setStoryTopic, handleSubmit}) {
+function NewStoryPage({storyTitle, storyContent, setStoryTitle, setStoryContent, readTime, setReadTime, storyTopic, setStoryTopic, handleSubmit, topics}) {
     
 
     return (
         <div>
             <NewStoryHeader/>
-            <form onSubmit={handleSubmit} action='/home.html'>
+            <form onSubmit={handleSubmit} >
                 <NewStoryForm 
                     storyContent={storyContent} 
                     storyTitle={storyTitle} 
@@ -29,4 +29,4 @@ function NewStoryPage({topics, storyTitle, storyContent, setStoryTitle, setStory
 
 }
 
-export default withRouter(NewStoryPage);
+export default NewStoryPage;

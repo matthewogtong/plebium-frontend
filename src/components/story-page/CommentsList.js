@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 
-function CommentsList() {
+function CommentsList({handleResponseSubmit}) {
 const [newResponse, setNewResponse] = useState("")
 //needs post function 
     return (
         <div>
         <h5>Comments List</h5>
-        <form className="response-form">
+        <form onSubmit={handleResponseSubmit} className="response-form">
             <input
             type="text"
             name="story-response"

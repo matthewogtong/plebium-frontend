@@ -4,27 +4,26 @@ import Dropdown from "react-bootstrap/Dropdown"
 
 function NewStoryInputs({readTime, setReadTime, topics, storyTopic, setStoryTopic}) {
 
-    const addStoryTopic = topics.map((topic) => {
-        return <Dropdown.Item key={topic.id} topic={topic}>{topic.name}</Dropdown.Item>
-      })
+    // const addStoryTopic = topics.map((topic) => {
+    //     return <Dropdown.Item key={topic.id} topic={topic}>{topic.name}</Dropdown.Item>
+    //   })
 
         return (
             <div className="story-readtime-input">
-              <h3>Title</h3>
               <input
                   type="number"
-                  name="title"
+                  name="readtime"
                   placeholder="Read Time"
                   value={readTime} 
-                  onChange={(e) => setReadTime(e.target.value)}
+                  onChange={(e) => setReadTime(parseInt(e.target.value))}
                 /> Minutes To Read
 
                 <div className="topic-list">
-                    <p className="topic-header">TOPICS YOU FOLLOW</p>
+                    <p className="topic-header">add topic to story</p>
                     <div className="topics-container"></div>
                     <div className="dropdown-topic-add">
-                        <DropdownButton id="dropdown-basic-button" title="ADD A TOPIC">
-                        {addStoryTopic}
+                        <DropdownButton id="dropdown-basic-button" title="add topic">
+
                         </DropdownButton>
                     </div>
                     </div>

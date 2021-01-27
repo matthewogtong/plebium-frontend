@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Route, Switch, Redirect } from "react-router-dom"
+import { Route, Switch, Redirect, useHistory } from "react-router-dom"
 import '../App.css';
 import HomePage from "./home-page/HomePage"
 import TitlePage from "./title-page/TitlePage"
@@ -30,6 +30,8 @@ function App() {
   const [newFirstName, setNewFirstName] = useState("")
   const [newLastName, setNewLastName] = useState("")
   const [newBio, setNewBio] = useState("")
+
+  let history = useHistory();
 
   //USER TOPICS
 
@@ -82,6 +84,10 @@ const handleCreateAccountSubmit = () => {
     })
 }
 
+function handleResponseSubmit() {
+
+}
+
 function handleAddStory(newStory) {
   const updatedStoriesArray = [newStory, ...stories]
   setStories(updatedStoriesArray)
@@ -106,14 +112,17 @@ function handleSubmit(e) {
       user_id: 1,
       topic_id: 1,
       title: storyTitle,
-      content: storyContent
+      content: storyContent,
+      read_time: readTime
     })
   })
     .then(r => r.json())
     .then(console.log)
     setStoryTitle("")
     setStoryContent("")
-    // router.history.push('/home');
+
+    history.push('/home')
+    
 }
 
 //PROFILE PARAMS
@@ -168,9 +177,6 @@ function handleSubmit(e) {
             storyTopic={storyTopic}
             setStoryTopic={setStoryTopic}
           />
-        </Route>
-        <Route path="/publish-story">
-          <PublishStoryPage />
         </Route>
       </Switch>
     </div>
