@@ -114,12 +114,12 @@
 /* HOME PAGE */
 .main-header {
   display: grid;
-  border: 2px solid black;
+  border-bottom: 1px solid black;
   grid-gap: 3px;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
-      ". mht . . . . . . . mhwr mhp ."
+      ". mht . . . . . . mainnav mainnav mainnav ."
       ". mhw mhn . . . . . . . . ."
 }
 
@@ -141,19 +141,14 @@
   grid-area: mhn;
 }
 
-.main-header-write {
-  grid-area: mhwr;
-  height: auto;
+/* MAIN HEADER NAV */
+
+.mainheader-nav { 
+  grid-area: mainnav;
   margin-top: auto;
-  margin-bottom: auto;
+  
 }
 
-.main-header-profile {
-  grid-area: mhp;
-  height: auto;
-  margin-top: auto;
-  margin-bottom: auto;
-}
 
 .topic-list {
   display: grid;
@@ -182,4 +177,45 @@
   grid-area: dta;
 }
 
-/* STORY PAGE */
+
+
+/* TRENDING STORIES */
+.trending-list {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 20px auto;
+  grid-template-areas:
+      ". . trendingheader trendingheader . ."
+      ". trendingstory trendingstory trendingstory trendingstory ."
+}
+
+.trending-list-header {
+  grid-area: trendingheader;
+}
+
+
+.trending-story-container {
+  grid-area: trendingstory;
+}
+
+/* BOOKMARK STORIES */
+.bookmark-list {
+  display: grid;
+  margin-top: 5%;
+  grid-gap: 3px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 20px auto;
+  grid-template-areas:
+      ". . bookmarkheader bookmarkheader . ."
+      ". bookmarkstory bookmarkstory bookmarkstory bookmarkstory ."
+}
+
+.bookmark-list-header {
+  grid-area: bookmarkheader;
+}
+
+
+.bookmark-story-container {
+  grid-area: bookmarkstory;
+}

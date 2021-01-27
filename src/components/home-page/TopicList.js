@@ -4,11 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton"
 import Dropdown from "react-bootstrap/Dropdown"
 
 function TopicList({ topics, currentUser }) {
-  const topicItems = topics.map((topic) => (
-    <Topic key={topic.id} topic={topic} />
-  ))
 
-  console.log(currentUser.topics)
   let userTopics;
   if (currentUser.topics) {
     userTopics = currentUser.topics.map((topic) => <Topic key={topic.id} topic={topic}/>);

@@ -1,9 +1,6 @@
 import React from "react";
-// import Button from "react-bootstrap/Button"
-import NavBar from "./NavBar";
 
-/* <Button className="main-header-write" variant="success" onClick={handleWriteStory}>Write</Button>
-        <Button className="main-header-profile" variant="success"onClick={handleViewProfile}>Profile</Button>  */
+import NavBar from "./NavBar";
 
 function MainHeader({ currentUser }) {
 

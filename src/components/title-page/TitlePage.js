@@ -34,7 +34,6 @@ function TitlePage({
         handleCreateAccountSubmit={handleCreateAccountSubmit}
       />
       <About />
-      <TrendingList />
     </div>
   );
 }

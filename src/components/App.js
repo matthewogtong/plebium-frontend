@@ -7,13 +7,11 @@ import ProfilePage from "./profile-page/ProfilePage"
 import StoryPage from "./story-page/StoryPage"
 import NewStoryPage from "./new-story-page/NewStoryPage"
 import PublishStoryPage from "./publish-story/PublishStoryPage"
-import NavBar from "./NavBar";
 
 
 function App() {
 
   const [topics, setTopics] = useState([])
-  const [users, setUsers] = useState([])
   const [stories, setStories] = useState([])
 
   const [storyTitle, setStoryTitle] = useState("")
@@ -38,6 +36,8 @@ function App() {
       .then((r) => r.json())
       .then(setTopics);
   }, []);
+
+  // STORIES
 
   useEffect(() => {
     fetch("http://localhost:3000/stories")
@@ -142,6 +142,7 @@ function handleSubmit(e) {
           <HomePage 
           topics={topics} 
           currentUser={currentUser}
+          stories={stories}
           />
         </Route>
         <Route path="/profile/:id">

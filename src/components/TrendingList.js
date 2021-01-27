@@ -1,12 +1,23 @@
 import React from "react";
 import TrendingStory from "./TrendingStory"
 
-function TrendingList() {
-return (
+function TrendingList({ currentUser, stories }) {
+
+    let trendingStories;
+    if (stories) {
+      trendingStories = stories.map((story) => <TrendingStory key={story.id} story={story}/>)
+    } else {
+      trendingStories = <p>No stories to display!</p>;
+    }
+
+  return (
     <div className="trending-list">
-        <TrendingStory />
+      <h6 className="trending-list-header">TRENDING STORIES</h6>
+      <div className="trending-story-container">
+        {trendingStories}
+      </div>
     </div>
-)
+  )
 }
 
 export default TrendingList;
