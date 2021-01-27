@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React, {useEffect, useState} from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 import '../App.css'
+=======
+import React, {useEffect, useState} from "react";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom"
+import '../App.css';
+>>>>>>> new-story-render
 import HomePage from "./home-page/HomePage"
 import TitlePage from "./title-page/TitlePage"
 import ProfilePage from "./profile-page/ProfilePage"
@@ -16,6 +22,7 @@ function App() {
   const [storyTitle, setStoryTitle] = useState("")
   const [storyContent, setStoryContent] = useState("")
   const [readTime, setReadTime] = useState("")
+  const [storyTopic, setStoryTopic] = useState("")
 
 
   const [currentUser, setCurrentUser] = useState([])
@@ -31,6 +38,8 @@ function App() {
   const [newFirstName, setNewFirstName] = useState("")
   const [newLastName, setNewLastName] = useState("")
   const [newBio, setNewBio] = useState("")
+
+  let history = useHistory();
 
   //USER TOPICS
 
@@ -87,6 +96,8 @@ const handleCreateAccountSubmit = () => {
 }
 
 
+// right now, it's always rendering as user1. should we remove this so it 
+// persists with currentUser?
 function handleSubmit(e) {
   e.preventDefault()
   
@@ -99,12 +110,16 @@ function handleSubmit(e) {
       user_id: 1,
       topic_id: 1,
       title: storyTitle,
-      content: storyContent
+      content: storyContent,
+      read_time: readTime
     })
   })
     .then(r => r.json())
     setStoryTitle("")
     setStoryContent("")
+
+    history.push('/home')
+    
 }
 
 const handleDeleteProfileStory = (storyId) => {
@@ -173,10 +188,9 @@ const handleDeleteProfileStory = (storyId) => {
             setStoryContent={setStoryContent}
             readTime={readTime}
             setReadTime={setReadTime}
+            storyTopic={storyTopic}
+            setStoryTopic={setStoryTopic}
           />
-        </Route>
-        <Route path="/publish-story">
-          <PublishStoryPage />
         </Route>
       </Switch>
     </div>

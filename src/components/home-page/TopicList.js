@@ -20,7 +20,8 @@ function TopicList({ topics, currentUser }) {
       <p className="topic-header">TOPICS YOU FOLLOW</p>
       <div className="topics-container">{userTopics}</div>
       <div className="dropdown-topic-add">
-        <DropdownButton id="dropdown-basic-button" title="ADD A TOPIC">
+        <DropdownButton id="dropdown-basic-button" title="Topic"
+        >
           {topicAddList}
         </DropdownButton>
       </div>
