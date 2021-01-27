@@ -8,29 +8,21 @@ function TrendingStory({ story }) {
 
   const handleSnapClick = () => {
     setTrendingStorySnaps(trendingStorySnaps + 1);
+    console.log(parseInt(trendingStorySnaps))
 
-    fetch(`http://localhost:3000/stories/${story.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        snaps: parseInt(trendingStorySnaps),
-      }),
+    fetch(`http://localhost:3000/stories/${story.id}/add_snap`, {
+      method: "PATCH"
     })
-      .then((r) => r.json())
-      .then(console.log)
   };
 
 
   return (
     <div className="trending-story">
       <Card>
-        <Card.Header as="h5">username</Card.Header>
+        <Card.Header as="h5">{story.user.username}</Card.Header>
         <Card.Body>
-          <Card.Title>Title</Card.Title>
-          <Card.Text>Topic | Read Time</Card.Text>
+          <Card.Title>{story.title}</Card.Title>
+          <Card.Text>{story.topic.name} | {story.read_time} min</Card.Text>
           <Button variant="primary">View Story</Button>
           <div className="profile-snap-div">
             <em>{trendingStorySnaps ? trendingStorySnaps : 0}</em>
