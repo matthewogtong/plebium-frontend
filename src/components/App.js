@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom"
 import '../App.css';
+import { useParams} from "react-router";
 import HomePage from "./home-page/HomePage"
 import TitlePage from "./title-page/TitlePage"
 import ProfilePage from "./profile-page/ProfilePage"
 import StoryPage from "./story-page/StoryPage"
 import NewStoryPage from "./new-story-page/NewStoryPage"
-import PublishStoryPage from "./publish-story/PublishStoryPage"
 
 
 function App() {
@@ -17,6 +17,9 @@ function App() {
   const [storyContent, setStoryContent] = useState("")
   const [readTime, setReadTime] = useState("")
   const [storyTopic, setStoryTopic] = useState("")
+
+  const [snaps, setSnaps] = useState(0)
+  const [newResponse, setNewResponse] = useState("")
 
 
   const [currentUser, setCurrentUser] = useState([])
@@ -34,6 +37,7 @@ function App() {
   const [newBio, setNewBio] = useState("")
 
   let history = useHistory();
+  const params = useParams();
 
   //USER TOPICS
 
@@ -67,6 +71,22 @@ const handleLoginSubmit = () => {
     })
 }
 
+const handleResponseSubmit = (e) => {
+  e.preventDefault()
+
+  fetch("http://localhost:3000/responses", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      response: newResponse
+    })
+  })
+    .then(r => r.json())
+    setNewResponse("")
+}
+
 
 // HANDLE CREATE ACCOUNT FUNCTION
 const handleCreateAccountSubmit = () => {
@@ -91,8 +111,7 @@ const handleCreateAccountSubmit = () => {
 }
 
 
-// right now, it's always rendering as user1. should we remove this so it 
-// persists with currentUser?
+//NEW STORY SUBMIT HANDLER
 function handleSubmit(e) {
   e.preventDefault()
   
@@ -113,7 +132,7 @@ function handleSubmit(e) {
     setStoryTitle("")
     setStoryContent("")
 
-    history.push('/home')
+    history.push('/story/:id')
     
 }
 
@@ -186,8 +205,8 @@ const handleDeleteBookmark = (bookmarkId) => {
             userStories={userStories}
           />
         </Route>
-        <Route path="/story">
-          <StoryPage currentUser={currentUser} />
+        <Route path="/story/:id">
+          <StoryPage storyTitle={storyTitle} storyContent={storyContent} readTime={readTime} snaps={snaps} currentUser={currentUser} handleResponseSubmit={handleResponseSubmit} newResponse={newResponse} setNewResponse={setNewResponse}/>
         </Route>
         <Route path="/new-story">
           <NewStoryPage
@@ -200,6 +219,8 @@ const handleDeleteBookmark = (bookmarkId) => {
             setReadTime={setReadTime}
             storyTopic={storyTopic}
             setStoryTopic={setStoryTopic}
+            snaps={snaps}
+            setSnaps={setSnaps}
           />
         </Route>
       </Switch>

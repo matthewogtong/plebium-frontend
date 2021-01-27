@@ -6,10 +6,10 @@ import NewStoryForm from "./NewStoryForm"
 
 function NewStoryPage({storyTitle, storyContent, setStoryTitle, setStoryContent, readTime, setReadTime, storyTopic, setStoryTopic, handleSubmit, topics}) {
     
-
+// "back" button within header 
     return (
         <div>
-            <NewStoryHeader/>
+            <NewStoryHeader />
             <form onSubmit={handleSubmit} >
                 <NewStoryForm 
                     storyContent={storyContent} 

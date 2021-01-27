@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 
-function CommentsList({handleResponseSubmit}) {
-const [newResponse, setNewResponse] = useState("")
+function CommentsList({newResponse, setNewResponse, handleResponseSubmit}) {
 //needs post function 
     return (
         <div>
@@ -11,8 +10,9 @@ const [newResponse, setNewResponse] = useState("")
             type="text"
             name="story-response"
             value={newResponse}
-            onClick={(e) => setNewResponse(e.target.value)}
+            onChange={(e) => setNewResponse(e.target.value)}
             />
+            <input type="submit" value="Post Response" />
         </form>
         </div>
     )
