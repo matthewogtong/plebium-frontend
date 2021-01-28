@@ -19,8 +19,9 @@ function App() {
   const [storyContent, setStoryContent] = useState("")
   const [readTime, setReadTime] = useState("")
   const [storyTopic, setStoryTopic] = useState("")
-
-  const [snaps, setSnaps] = useState(0)
+  const [storySnaps, setStorySnaps] = useState(0)
+  const [storyId, setStoryId] = useState(0)
+ 
   const [newResponse, setNewResponse] = useState("")
 
 
@@ -144,6 +145,8 @@ function handleSubmit(e) {
     .then(resObj => {
       setStoryTitle(resObj.title)
       setStoryContent(resObj.content)
+      setStoryId(resObj.id)
+      setStorySnaps(resObj.snaps)
       // setReadTime(resObj.readTime)
       history.push(`/story/${resObj.id}`)
     }
@@ -221,8 +224,21 @@ const handleDeleteBookmark = (bookmarkId) => {
             userStories={userStories}
           />
         </Route>
-        <Route path="/story/:id" >
-          <StoryPage responses={responses} storyTitle={storyTitle} storyContent={storyContent} readTime={readTime} snaps={snaps} currentUser={currentUser} handleResponseSubmit={handleResponseSubmit} newResponse={newResponse} setNewResponse={setNewResponse}/>
+        <Route path="/story/:id">
+          <StoryPage
+            responses={responses}
+            storyTitle={storyTitle}
+            storyContent={storyContent}
+            readTime={readTime}
+            currentUser={currentUser}
+            handleResponseSubmit={handleResponseSubmit}
+            newResponse={newResponse}
+            setNewResponse={setNewResponse}
+            storySnaps={storySnaps}
+            setStorySnaps={setStorySnaps}
+            storyId={storyId}
+            setStoryId={setStoryId}
+          />
         </Route>
         <Route path="/new-story">
           <NewStoryPage
@@ -235,8 +251,6 @@ const handleDeleteBookmark = (bookmarkId) => {
             setReadTime={setReadTime}
             storyTopic={storyTopic}
             setStoryTopic={setStoryTopic}
-            snaps={snaps}
-            setSnaps={setSnaps}
             topics={topics}
           />
         </Route>
