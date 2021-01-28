@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom"
 import '../App.css';
-import { useParams} from "react-router";
+// import { useParams} from "react-router";
 import HomePage from "./home-page/HomePage"
 import TitlePage from "./title-page/TitlePage"
 import ProfilePage from "./profile-page/ProfilePage"
@@ -12,6 +12,7 @@ import NewStoryPage from "./new-story-page/NewStoryPage"
 function App() {
   const [topics, setTopics] = useState([])
   const [stories, setStories] = useState([])
+  const [responses, setResponses] = useState([])
 
   // NEW STORY STATES
   const [storyTitle, setStoryTitle] = useState("")
@@ -38,7 +39,7 @@ function App() {
   const [newBio, setNewBio] = useState("")
 
   let history = useHistory();
-  const params = useParams();
+  // const params = useParams();
 
   //USER TOPICS
 
@@ -54,6 +55,12 @@ function App() {
     fetch("http://localhost:3000/stories")
       .then((r) => r.json())
       .then(setStories)
+  }, [])
+
+  useEffect(() => {
+    fetch("http://localhost:3000/responses")
+      .then((r) => r.json())
+      .then(setResponses)
   }, [])
 
 // HANDLE LOGIN FUNCTION
@@ -72,6 +79,7 @@ const handleLoginSubmit = () => {
     })
 }
 
+// HANDLE RESPONSE SUBMIT
 const handleResponseSubmit = (e) => {
   e.preventDefault()
 
@@ -81,11 +89,14 @@ const handleResponseSubmit = (e) => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      response: newResponse
+      content: newResponse
     })
   })
     .then(r => r.json())
-    setNewResponse("")
+    .then(newResp => {
+      setNewResponse(newResp.content)
+
+    })
 }
 
 
@@ -130,11 +141,13 @@ function handleSubmit(e) {
     })
   })
     .then(r => r.json())
-    setStoryTitle("")
-    setStoryContent("")
-
-    history.push('/story/:id')
-    
+    .then(resObj => {
+      setStoryTitle(resObj.title)
+      setStoryContent(resObj.content)
+      // setReadTime(resObj.readTime)
+      history.push(`/story/${resObj.id}`)
+    }
+  )
 }
 
 const handleDeleteProfileStory = (storyId) => {
@@ -208,8 +221,8 @@ const handleDeleteBookmark = (bookmarkId) => {
             userStories={userStories}
           />
         </Route>
-        <Route path="/story/:id">
-          <StoryPage storyTitle={storyTitle} storyContent={storyContent} readTime={readTime} snaps={snaps} currentUser={currentUser} handleResponseSubmit={handleResponseSubmit} newResponse={newResponse} setNewResponse={setNewResponse}/>
+        <Route path="/story/:id" >
+          <StoryPage responses={responses} storyTitle={storyTitle} storyContent={storyContent} readTime={readTime} snaps={snaps} currentUser={currentUser} handleResponseSubmit={handleResponseSubmit} newResponse={newResponse} setNewResponse={setNewResponse}/>
         </Route>
         <Route path="/new-story">
           <NewStoryPage
