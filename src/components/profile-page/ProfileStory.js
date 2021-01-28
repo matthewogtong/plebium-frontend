@@ -1,8 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Card, Button } from "react-bootstrap"
 import { useSpring, animated } from "react-spring"
 
 function ProfileStory({story, handleDeleteProfileStory}) {
+  let history = useHistory();
+
+  function handleViewProfileStory(story) {
+    history.push(`/story/${story.id}`);
+  }
 
   const props = useSpring({opacity: 1, from: {opacity: 0}})
 
@@ -13,7 +19,7 @@ function ProfileStory({story, handleDeleteProfileStory}) {
           <Card.Body>
             <Card.Title>{story.topic} | {story.read_time}</Card.Title>
             <Card.Text>{story.title}</Card.Text>
-            <Button variant="light">View Story</Button>
+            <Button onClick={handleViewProfileStory} variant="light">View Story</Button>
             <br />
             <Button onClick={e => handleDeleteProfileStory(story.id)} variant="danger">Delete Story</Button>
             <br />

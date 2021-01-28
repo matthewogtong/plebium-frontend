@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useHistory } from "react-router-dom";
 import { Button, Card } from "react-bootstrap"
 import UseAnimations from "react-useanimations"
 import bookmark from 'react-useanimations/lib/bookmark'
@@ -9,6 +10,8 @@ function TrendingStory({ story, userBookmarks, setUserBookmarks, currentUser }) 
   const [trendingStorySnaps, setTrendingStorySnaps] = useState(story.snaps)
   const [checked, setChecked] = useState(false);
 
+  let history = useHistory();
+
   const handleSnapClick = () => {
     setTrendingStorySnaps(trendingStorySnaps + 1);
     console.log(parseInt(trendingStorySnaps))
@@ -17,6 +20,11 @@ function TrendingStory({ story, userBookmarks, setUserBookmarks, currentUser }) 
       method: "PATCH"
     })
   };
+
+  function handleViewTrendingStory(story) {
+    console.log("view trending", story)
+    history.push(`/story/${story.id}`);
+  }
 
   const handleBookmarkClick = () => {
 
@@ -53,7 +61,7 @@ function TrendingStory({ story, userBookmarks, setUserBookmarks, currentUser }) 
           <Card.Text>
             {story.topic.name} | {story.read_time} min
           </Card.Text>
-          <Button variant="outline-primary">View Story</Button>
+          <Button onClick={handleViewTrendingStory} variant="outline-primary">View Story</Button>
           <div className="trending-story-bookmark-div">
               <UseAnimations
                 reverse={checked}
